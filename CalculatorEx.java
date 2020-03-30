@@ -19,12 +19,12 @@ class CalculatorEx extends Frame implements ActionListener {
 	
 
 	public CalculatorEx()  {
-		//ÆùÆ®»ö»óÀº Á¦ÀÏ Áø È¸ r165/ g120/ b115
+		//colors for font are the darkest grey r165/ g120/ b115
 		Font f = new Font( Font.SERIF, Font.BOLD,20 );
 
 		
-		//¾ç¿·¿©¹é
-		//¿©¹éÄÃ·¯´Â ÈòÈ¸r 240/ g236/ b221
+		//spaces for the both sides
+		//colors for the spaces r240/ g236/ b221
 		Panel left = new Panel();
 		Panel right = new Panel();
 		left.setBackground( new Color( 240, 236, 221 ) );
@@ -36,17 +36,17 @@ class CalculatorEx extends Frame implements ActionListener {
 		add( right, "East" );
 		
 
-		//ÇÏ´ÜºÎ (¿©¹é)
+		//south(space)
 		south = new Panel();
 		south.setBackground( new Color( 240, 236, 221 ) );
 		south.add( new Label( "                 " ) );
 
 		add( south, "South" );
 
-		//Áß´Ü ºÎ : »çÄ¢¿¬»êÀÌ¶û ¼ýÀÚ ¹öÆ°
+		//Middle:the arithmetic calculation and the numbers
 		p1 = new Panel();
-		//bg´Â Á¦ÀÏ Áø È¸ r91 /g88/ b83
-		//Áß°£ ÇÎÅ© r 219 / g175/ b173
+		//bg is the darkest grey È¸ r91 /g88/ b83
+		//middle pink 219 / g175/ b173
 		p1.setBackground( new Color( 91, 88, 83 ) );
 		p1.setLayout( new GridLayout( 5,4,15,15 ) ); 
 		plus = new Button( "+" );
@@ -67,8 +67,8 @@ class CalculatorEx extends Frame implements ActionListener {
 		equal = new Button( "=" );
 		c = new Button( "C" );
 		ce = new Button( "CE" );
-		backspace = new Button( "¢¸" );
-		plusminus = new Button( "¡¾" );
+		backspace = new Button( "â—€" );
+		plusminus = new Button( "Â±" );
 
 
 		p1.setForeground( new Color( 165, 120, 115 ) );
@@ -97,18 +97,18 @@ class CalculatorEx extends Frame implements ActionListener {
 		add( p1, "Center" );
 
 		
-		//¾ç¿·¿©¹é(¿¬»êÃ¢¿¡µµ)
+		//spaces for the both side bars(on the panel as well)
 		left.add( new Label ( "" ) );
 		right.add( new Label ( "" ) );
 		
 		add( left, "West" );
 		add( right, "East" );
 
-		//»ó´Ü ºÎ : ¿¬»ê Ã¢
+		//Upper part: calculation part
 		p2 = new Panel();
 		p2.setBackground( new Color( 240, 236, 221 ) );
 		ta = new TextArea( "", 2, 28, TextArea.SCROLLBARS_NONE  );
-		//¿¬»êÃ¢ÀÇ bg´Â Áß°£ È¸ r 190/ g183/ b 167
+		//ï¿½ï¿½ï¿½ï¿½Ã¢ï¿½ï¿½ bgï¿½ï¿½ ï¿½ß°ï¿½ È¸ r 190/ g183/ b 167
 		ta.setBackground( new Color( 190, 183, 167 ) );
 		ta.setForeground( new Color( 91, 88, 83 ) );
 		ta.setFont( f );
@@ -119,15 +119,15 @@ class CalculatorEx extends Frame implements ActionListener {
 		
 		
 		
-		//ÀÌ°Ô ¿©±âÀÖ´Â ÀÌÀ¯´Â, ±×¸²À» ±×¸®°í ¿©±â Visible·Î ¶ç¾îÁÜ
+		//I put this in here, in order to show the piture and set it as visible
 		setResizable( false );
 		setBounds( 1500, 200, 400, 500 );
 		setVisible( true );
 		//setDefaultCloseOperation( Frame.EXIT_ON_CLOSE );
-			//--> SwingÀÌ ¾Æ´Ï¹Ç·Î
+			//--> b/c this is not Swing
 
-		//WindowEvent (Ã¢ ¶ç¿öÁÖ´Â°Å)
-		addWindowListener( //x´©¸£¸é ²¨Áö´Â°Å
+		//WindowEvent (showing the window)
+		addWindowListener( //turns off when clicking X button
 			new WindowAdapter(){
 				public void windowClosing( WindowEvent e ){
 					System.exit(0); 
@@ -136,7 +136,7 @@ class CalculatorEx extends Frame implements ActionListener {
 		);
 
 		
-		//CalculateEvent : °¨Áö±â ºÙÀÌ°í ÇÚµé·¯ ºÙÀÌ´Â°Å
+		//CalculateEvent : putting a sensor and a handler
 		plus.addActionListener( this ); //
 		minus.addActionListener( this );
 		multiply.addActionListener( this );
@@ -158,10 +158,10 @@ class CalculatorEx extends Frame implements ActionListener {
 		backspace.addActionListener( this );
 		plusminus.addActionListener( this );	
 
-	}//»ý¼ºÀÚ
+	}//producer
 
-	//mainÀü¿¡ event Ã³¸®ÇÏ´Â ¸Þ¼Òµå¸¦ µû·Î ¸¸µé¾îÁà¾ßÇÔ
-	//ActionEvent °¨Áö±â
+	//Before the main metho, I was to make the method that acutually make event enable
+	//ActionEvent Sensor
 	public void actionPerformed( ActionEvent e ){
 		//Object source = e.getSource();
 		String com = e.getActionCommand();
@@ -236,11 +236,11 @@ class CalculatorEx extends Frame implements ActionListener {
 			tempInput = "";
 			ta.setText("0");
 
-		} else if (com.equals( "¢¸" ) ){
+		} else if (com.equals( "â—€" ) ){
 			temp = temp.substring(0, temp.length()-1);
 			ta.setText( temp );
-		} else if (com.equals( "¡¾" ) ){
-			ta.append("¡¾");
+		} else if (com.equals( "Â±" ) ){
+			ta.append("Â±");
 		}
 		ta.requestFocus();
 	}
