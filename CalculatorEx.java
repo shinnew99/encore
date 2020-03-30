@@ -108,7 +108,7 @@ class CalculatorEx extends Frame implements ActionListener {
 		p2 = new Panel();
 		p2.setBackground( new Color( 240, 236, 221 ) );
 		ta = new TextArea( "", 2, 28, TextArea.SCROLLBARS_NONE  );
-		//����â�� bg�� �߰� ȸ r 190/ g183/ b 167
+		//The color for actual calculating part is r 190/ g183/ b 167
 		ta.setBackground( new Color( 190, 183, 167 ) );
 		ta.setForeground( new Color( 91, 88, 83 ) );
 		ta.setFont( f );
